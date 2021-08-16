@@ -5,9 +5,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    {{-- <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a>
+                    </a> --}}
                 </div>
 
                 <!-- Navigation Links -->
@@ -34,6 +34,18 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+                        <x-dropdown-link :href="url('admin/users')">
+                            {{ __('Users') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('admin/roles')">
+                            {{ __('Roles') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('admin/permissions')">
+                            {{ __('Permissions') }}
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -66,6 +78,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -76,6 +89,21 @@
             </div>
 
             <div class="mt-3 space-y-1">
+
+                <x-responsive-nav-link :href="url('admin/users')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+                
+                <x-responsive-nav-link :href="url('admin/roles')">
+                    {{ __('Roles') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="url('admin/permissions')">
+                    {{ __('Permissions') }}
+                </x-responsive-nav-link>
+
+
+                
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
