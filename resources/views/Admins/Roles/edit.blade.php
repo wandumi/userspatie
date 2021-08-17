@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="mb-3 mx-4 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Edit Role</a>
+                <a href="{{ url('admin/roles') }}" class="bg-blue-500 px-3 py-2 text-white">back</a>
             </div>
 
             @if (session()->has('success'))

@@ -9,59 +9,83 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="mb-5 mx-4 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Edit User</a>
+                <a href="{{ url('admin/users') }}" class="bg-blue-500 px-3 py-2 text-white">Back</a>
             </div>
 
-                <form action="" method="post" class="mx-4 my-2">
-                    <div class="grid grid-cols-1 gap-6">
-                        <label class="block">
-                          <span class="text-gray-700">Full name</span>
-                          <input type="text" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" placeholder="">
-                        </label>
-                        <label class="block">
-                          <span class="text-gray-700">Email address</span>
-                          <input type="email" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" placeholder="john@example.com">
-                        </label>
-                        <label class="block">
-                          <span class="text-gray-700">When is your event?</span>
-                          <input type="date" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black">
-                        </label>
-                        <label class="block">
-                          <span class="text-gray-700">What type of event is it?</span>
-                          <select class="block w-full mt-0 px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black">
-                            <option>Corporate event</option>
-                            <option>Wedding</option>
-                            <option>Birthday</option>
-                            <option>Other</option>
-                          </select>
-                        </label>
-                        <label class="block">
-                          <span class="text-gray-700">Additional details</span>
-                          <textarea class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" rows="2"></textarea>
-                        </label>
-                        <div class="block">
-                          <div class="mt-2">
-                            <div>
-                              <label class="inline-flex items-center">
-                                <input type="checkbox" class="border-gray-300 border-2 text-black focus:border-gray-300 focus:ring-black">
-                                <span class="ml-2">Email me news and special offers</span>
-                              </label>
-                            </div>
-                          </div>
+            <form action="" method="post" class="mx-4">
+              <div class="mt-8 max-w-md">
+                  <div class="grid grid-cols-1 gap-6">
+                    <label class="block">
+                      <span class="text-gray-700">Full name</span>
+                      <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="{{ $user->name }}">
+                    </label>
+                    <label class="block">
+                      <span class="text-gray-700">Email address</span>
+                      <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="{{ $user->email }}">
+                    </label>
+
+                   
+                    <label class="block">
+                      <span class="text-gray-700">Password</span>
+                      <input type="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="{{ $user->email }}">
+                     
+                    </label>
+
+                    <label class="block">
+                      <span class="text-gray-700">Confirm Password</span>
+                      <input type="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="{{ $user->email }}">
+                     
+
+                    </label>
+                    
+                   
+
+                    <div class="block">
+                      <span class="text-gray-700">Assign Role</span>
+                      <div class="mt-2">
+                        <div>
+                          @foreach ($roles as $role)
+                            <label class="inline-flex items-center mr-2">
+                              <input type="checkbox" name="role[]" value="{{ $role->id }}"
+                                  @foreach ($user->Roles as $userrole)
+
+                                      @if ( $role->id == $userrole->id )
+                                          checked
+                                      @endif
+
+                                  @endforeach
+                              
+                              >
+                              <span class="ml-2">{{ $role->name }}</span>
+                            </label>
+                              
+                          @endforeach
                         </div>
-
-                        <div class="block">
-                            <div class="mt-2">
-                                <div>
-                                    <input type="button" value="Update" class="bg-blue-500 text-white p-2">
-                                </div>
-                            </div>
-                        </div>
-
-
                       </div>
-  
-                </form>
+                    </div>
+
+                    
+                   
+
+                    <div class="block">
+                      <div class="mt-2">
+                        <div>
+                           <input type="button" value="Submit" class="bg-blue-500 w-full text-white p-2">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </form>
             
             
         </div>

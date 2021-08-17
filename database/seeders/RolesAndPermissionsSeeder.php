@@ -109,6 +109,10 @@ class RolesAndPermissionsSeeder extends Seeder
             $AdminPermission1
         ]);
 
+        $UserRole->syncPermissions([
+           
+        ]);
+
         //Create the users 
         $SuperAdmin = User::create([
             'name' => 'super admin',
@@ -189,7 +193,7 @@ class RolesAndPermissionsSeeder extends Seeder
             $AdminPermission1,
         ]);
 
-        $SuperAdmin->syncRoles($UserRole);
+        $User->syncRoles($UserRole);
 
     }
 }

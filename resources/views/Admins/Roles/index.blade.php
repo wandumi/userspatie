@@ -19,7 +19,7 @@
                             <tr>
                                 <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Id</th>
                                 <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Name</th>
-                                <th scope="col" class="w-1/2 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Permissions</th>
+                                <th scope="col" style="width: 50px;" class="w-1/2 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Permissions</th>
                                 <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Guard</th>
                                 <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Created At</th>
                                 <th scope="col" class="relative px-6 py-3">Action</th>
@@ -34,14 +34,15 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap ">
                                         @foreach ($role->permissions as $permission)
-                                            <span class="font-bold">{{ $permission->name }}, </span>
+                                            <span class="font-bold">{{ $permission->name }} </span><br/>
                                         @endforeach
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->guard_name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
-                                        <a href="{{ url('admin/roles/edit/'.$role->id ) }}" class="m-1 py-2 px-4 bg-green-400 rounded">Edit</a> 
-                                        <a href="#" class="m-1 p-2 bg-red-600 rounded text-white">Delete</a>
+                                        <a href="{{ url('admin/roles/edit/'.$role->id ) }}" class="sm:mb-10 py-2 px-4 bg-green-400 rounded">Edit</a> 
+                                        &nbsp;
+                                        <a href="#" class="mt-20 p-2 bg-red-600 rounded text-white">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

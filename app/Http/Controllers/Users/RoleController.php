@@ -109,8 +109,6 @@ class RoleController extends Controller
         $role = Role::where('id',$id)->first();
 
         //@dd($role);
-
-        
         $role->name = $request->name;
         $role->guard_name = 'web';
         
