@@ -15,7 +15,8 @@
             <div class="bg-white">
 
             </div>
-                <form action="" method="post" class="mx-4">
+                <form action="{{ url('admin/permissions/store') }}" method="post" class="mx-4">
+                  @csrf
                     <div class="mt-8 max-w-md">
                       <div class="grid grid-cols-1 gap-6">
                         <label class="block">
@@ -47,7 +48,7 @@
                         <div class="block">
                           <div class="mt-2">
                             <div>
-                               <input type="button" value="Submit" class="bg-blue-500 text-white p-2">
+                               <input type="submit" value="Submit" class="bg-blue-500 text-white p-2">
                             </div>
                           </div>
                         </div>

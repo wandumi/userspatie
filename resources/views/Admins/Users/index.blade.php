@@ -22,7 +22,7 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Email</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Roles</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Created At</th>
-                                <th scope="col" class="relative px-6 py-3">Edit / Delete</th>
+                                <th scope="col" class="relative px-6 py-3">Action</th>
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -33,7 +33,11 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">Roles</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @foreach ($user->roles as $role)
+                                            <span class="font-bold">{{ $role->name }} </span>
+                                        @endforeach
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
                                         <a href="{{ url('admin/users/edit/'.$user->id ) }}" class="m-1 py-2 px-4 bg-green-400 rounded">Edit</a> 
@@ -49,7 +53,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                 created At
                                 </td>
-                                <td class="px-6 py-4 text-center text-sm">Edit Delete</td>
+                                <td class="px-6 py-4 text-center text-sm">Action</td>
                             </tr>
                             <!-- More items... -->
                             </tbody>

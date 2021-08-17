@@ -14,15 +14,15 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200">
+                        <table class=" table-fixed min-w-full divide-y divide-gray-200 ">
                             <thead class="bg-gray-50 dark:bg-gray-600 dark:text-gray-200">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Id</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Name</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Permissions</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Guard</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Created At</th>
-                                <th scope="col" class="relative px-6 py-3">Edit / Delete</th>
+                                <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Id</th>
+                                <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Name</th>
+                                <th scope="col" class="w-1/2 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Permissions</th>
+                                <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Guard</th>
+                                <th scope="col" class="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Created At</th>
+                                <th scope="col" class="relative px-6 py-3">Action</th>
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -32,7 +32,11 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->name }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">Permissions</td>
+                                    <td class="px-6 py-4 whitespace-nowrap ">
+                                        @foreach ($role->permissions as $permission)
+                                            <span class="font-bold">{{ $permission->name }}, </span>
+                                        @endforeach
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->guard_name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
@@ -49,7 +53,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                 created At
                                 </td>
-                                <td class="px-6 py-4 text-center text-sm">Edit Delete</td>
+                                <td class="px-6 py-4 text-center text-sm">Action</td>
                             </tr>
                             <!-- More items... -->
                             </tbody>

@@ -17,7 +17,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $Roles = Role::all();
+        $Roles = Role::with('permissions')->get();
+
+        //@dd($Roles);
+
         return view('Admins.roles.index', compact('Roles') );
     }
 
@@ -41,7 +44,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:50|unique:roles',
+            'permissions' => 'required',
+            'guard_name' => 'required'
+        ]);
+
+        $role = new Role;
+        $role->name = $request->name;
+        $role->guard_name = 'web';
+        $role->save();
+
+        return redirect()->route('admin.roles');
     }
 
     /**

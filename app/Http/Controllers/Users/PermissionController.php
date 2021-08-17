@@ -38,7 +38,20 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        $this->validate($request, [
+            'name' => 'required|max:50|unique:permissions',
+            'description' => 'required|max:255',
+            'guard_name' => 'required'
+        ]);
+
+        $permission = new Permission;
+        $permission->name = $request->name;
+        $permission->description = $request->description;
+        $permission->guard_name = 'web';
+        $permission->save();
+
+        return redirect()->route('admin.permissions');
     }
 
     /**
