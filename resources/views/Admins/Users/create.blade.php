@@ -31,14 +31,31 @@
                             <input type="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                           </label>
                           <label class="block">
-                            <span class="text-gray-700">What type of event is it?</span>
+                            <span class="text-gray-700">Assign Role</span>
                             <select class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                              <option>Corporate event</option>
-                              <option>Wedding</option>
-                              <option>Birthday</option>
-                              <option>Other</option>
+                              <option disabled value="">Choose a Role</option>
+                              
+                              @foreach ($roles as $role)
+                                 <option  name="role[]" value="{{ $role->id }}">{{ $role->name }}</option>
+                              @endforeach
+                             
                             </select>
                           </label>
+
+                          <div class="block">
+                            <span class="text-gray-700">Assign Role</span>
+                            <div class="mt-2">
+                              <div>
+                                @foreach ($roles as $role)
+                                  <label class="inline-flex items-center mr-2">
+                                    <input type="checkbox" name="role[]" value="{{ $role->id }}">
+                                    <span class="ml-2">{{ $role->name }}</span>
+                                  </label>
+                                    
+                                @endforeach
+                              </div>
+                            </div>
+                          </div>
                           <label class="block">
                             <span class="text-gray-700">Additional details</span>
                             <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" rows="3"></textarea>

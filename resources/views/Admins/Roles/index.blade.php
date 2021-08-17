@@ -19,6 +19,7 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Id</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Name</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Permissions</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Guard</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Created At</th>
                                 <th scope="col" class="relative px-6 py-3">Edit / Delete</th>
@@ -31,6 +32,7 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">Permissions</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->guard_name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $role->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
@@ -42,6 +44,7 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">id</td>
                                 <td class="px-6 py-4 whitespace-nowrap">Name</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Permissions</td>
                                 <td class="px-6 py-4 whitespace-nowrap">Guard</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                 created At

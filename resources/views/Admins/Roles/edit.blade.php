@@ -12,9 +12,6 @@
                 <a href="" class="bg-blue-500 px-3 py-2 text-white">Edit Role</a>
             </div>
 
-            <div class="bg-white">
-
-            </div>
                 <form action="" method="post" class="mx-4">
                     <div class="mt-8 max-w-md">
                       <div class="grid grid-cols-1 gap-6">
