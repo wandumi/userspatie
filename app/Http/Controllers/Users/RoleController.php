@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
 
 
 class RoleController extends Controller
@@ -27,7 +28,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('Admins.roles.create');
+        $permissions = Permission::all();
+
+        return view('Admins.roles.create', compact('permissions') );
     }
 
     /**
@@ -62,7 +65,9 @@ class RoleController extends Controller
     {
         $role = Role::find($id)->first();
 
-        return view('Admins.roles.edit');
+        $permissions = Permission::all();
+
+        return view('Admins.roles.edit', compact('permissions') );
     }
 
     /**

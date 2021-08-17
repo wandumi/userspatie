@@ -32,6 +32,21 @@
                                  name="guard"
                                  disabled>
                         </label>
+
+                        <div class="block">
+                          <span class="text-gray-700">Assign Role</span>
+                          <div class="mt-2">
+                            <div>
+                              @foreach ($permissions as $permission)
+                                <label class="inline-flex items-center mr-2">
+                                  <input type="checkbox" name="permission[]" value="{{ $permission->id }}">
+                                  <span class="ml-2">{{ $permission->name }}</span>
+                                </label>
+                                  
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
                        
                        
                         
