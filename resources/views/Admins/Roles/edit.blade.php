@@ -46,15 +46,30 @@
                         </label>
 
                         <div class="block">
-                          <span class="text-gray-700">Assign Role</span>
+                          <span class="text-gray-700">Assign Permissions</span>
                           <div class="mt-2">
                             <div>
                               @foreach ($permissions as $permission)
-                                <label class="inline-flex items-center mr-2">
-                                  <input type="checkbox" name="permission[]" value="{{ $permission->id }}">
-                                  <span class="ml-2">{{ $permission->name }}</span>
-                                </label>
+                                
                                   
+                                  <label class="inline-flex items-center mr-2">
+                                    <input type="checkbox" 
+                                           name="permission[]" 
+                                           value="{{ $permission->id }}"
+
+                                              @foreach ($role->Permissions as $rolepermid)
+                                                    @if ($permission->id == $rolepermid->id)
+                                                        checked
+                                                        
+                                                    @endif
+                                                  
+                                              @endforeach
+                                            
+                                           
+                                           >
+                                    <span class="ml-2">{{ $permission->name }}</span>
+                                  </label>
+                               
                               @endforeach
                             </div>
                           </div>

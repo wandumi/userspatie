@@ -17,7 +17,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $Roles = Role::with('permissions')->get();
+        $Roles = Role::with('permissions')->paginate(10);
 
         //@dd($Roles);
 
@@ -45,11 +45,10 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         // @dd( $request->all() );
-        // $this->validate($request, [
-        //     'name' => 'required|max:50|unique:roles',
-        //     'permissions' => 'required',
-        //     'guard_name' => 'required'
-        // ]);
+        $this->validate($request, [
+            'name' => 'required|max:50|unique:roles',
+            'permissions' => 'required'
+        ]);
 
         $role = new Role;
         $role->name = $request->name;
@@ -87,8 +86,13 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::where('id',$id)->first();
+        //@dd($role->permissions);
+
         
+
         $permissions = Permission::all();
+
+
 
         return view('Admins.roles.edit', compact('permissions','role') );
     }
@@ -104,19 +108,19 @@ class RoleController extends Controller
     {
         $role = Role::where('id',$id)->first();
 
-        @dd($role);
+        //@dd($role);
 
-        $role = new Role;
+        
         $role->name = $request->name;
         $role->guard_name = 'web';
         
         
-        if($request->has('permissions'))
+        if($request->has('permission'))
         {
-            //@dd(collect( $request->permissions ));
-            $role->givePermissionTo( $request->permissions );
+            //@dd(collect( $request->permission ));
+            $role->syncPermissions( $request->permission );
         }
-
+        
         $role->save();
 
         return redirect()->back()->with('success','Role / Permission updated successfully.');

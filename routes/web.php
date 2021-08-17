@@ -32,20 +32,20 @@ Route::prefix('admin')->name('admin')->group(function() {
     Route::prefix('users')->name('users.')->group(function(){
 
         Route::get('/', [UserController::class, 'index'] )->name('index');
-        Route::get('/create', [UserController::class, 'create']);
-        Route::post('/store', [UserController::class, 'store']);
-        Route::get('/edit/{id}', [UserController::class, 'edit']);
-        Route::post('/update/{id}', [UserController::class, 'update']);
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/store', [UserController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [UserController::class, 'update'])->name('update');
 
     });
 
     Route::prefix('roles')->name('roles.')->group(function(){
 
-        Route::get('/', [RoleController::class, 'index'] )->name('roles');
-        Route::get('/create', [RoleController::class, 'create']);
-        Route::post('/store', [RoleController::class, 'store']);
-        Route::get('/edit/{id}', [RoleController::class, 'edit']);
-        Route::post('/update/{id}', [RoleController::class, 'update']);
+        Route::get('/', [RoleController::class, 'index'] )->name('index');
+        Route::get('/create', [RoleController::class, 'create'])->name('create');
+        Route::post('/store', [RoleController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [RoleController::class, 'update'])->name('update');
 
     });
 
