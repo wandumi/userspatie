@@ -44,18 +44,27 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:50|unique:roles',
-            'permissions' => 'required',
-            'guard_name' => 'required'
-        ]);
+        // @dd( $request->all() );
+        // $this->validate($request, [
+        //     'name' => 'required|max:50|unique:roles',
+        //     'permissions' => 'required',
+        //     'guard_name' => 'required'
+        // ]);
 
         $role = new Role;
         $role->name = $request->name;
         $role->guard_name = 'web';
+        
+        
+        if($request->has('permissions'))
+        {
+            //@dd(collect( $request->permissions ));
+            $role->givePermissionTo( $request->permissions );
+        }
+
         $role->save();
 
-        return redirect()->route('admin.roles');
+        return redirect()->route('dashboard');
     }
 
     /**

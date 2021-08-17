@@ -15,27 +15,47 @@
             <div class="bg-white">
 
             </div>
-                <form action="" method="post" class="mx-4">
+                <form action="{{ url('admin/roles/store') }}" method="post" class="mx-4">
+                  @csrf
                     <div class="mt-8 max-w-md">
                       <div class="grid grid-cols-1 gap-6">
                         <label class="block">
                           <span class="text-gray-700">Role name</span>
-                          <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="">
+                          <input type="text" 
+                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                                 placeholder=""
+                                 name="name">
                         </label>
                         <label class="block">
                           <span class="text-gray-700">Guard Name</span>
                           <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                                   placeholder="Web"
                                   value="web"
+                                  name="guard"
                                   disabled>
                         </label>
-                        
+
+
+                        <div class="block">
+                          <span class="text-gray-700">Assign Role</span>
+                          <div class="mt-2">
+                            <div>
+                              @foreach ($permissions as $permission)
+                                <label class="inline-flex items-center mr-2">
+                                  <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                                  <span class="ml-2">{{ $permission->name }}</span>
+                                </label>
+                                  
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
                         
                         
                         <div class="block">
                           <div class="mt-2">
                             <div>
-                                <input type="button" value="Submit" class="bg-blue-500 text-white p-2">
+                                <input type="submit" value="Submit" class="bg-blue-500 w-full text-white p-2">
                             </div>
                           </div>
                         </div>

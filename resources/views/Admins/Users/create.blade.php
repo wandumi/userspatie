@@ -65,7 +65,7 @@
                           <div class="block">
                             <div class="mt-2">
                               <div>
-                                 <input type="button" value="Submit" class="bg-blue-500 text-white p-2">
+                                 <input type="button" value="Submit" class="bg-blue-500 w-full text-white p-2">
                               </div>
                             </div>
                           </div>
