@@ -34,7 +34,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
-                                        <a href="#" class="m-1 py-2 px-4 bg-green-400 rounded">Edit</a> 
+                                        <a href="{{ url('admin/users/edit/'.$user->id ) }}" class="m-1 py-2 px-4 bg-green-400 rounded">Edit</a> 
                                         <a href="#" class="m-1 p-2 bg-red-600 rounded text-white">Delete</a>
                                     </td>
                                 </tr>
