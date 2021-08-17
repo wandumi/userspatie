@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="mb-3 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Create Permission</a>
+                <a href="{{ url('admin/permissions/create') }}" class="bg-blue-500 px-3 py-2 text-white">Create Permission</a>
             </div>
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -34,7 +34,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $permission->guard_name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $permission->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
-                                        <a href="#" class="m-1 py-2 px-4 bg-green-400 rounded">Edit</a> 
+                                        <a href="{{ url('admin/permissions/edit/'.$permission->id) }}" class="m-1 py-2 px-4 bg-green-400 rounded">Edit</a> 
                                         <a href="#" class="m-1 p-2 bg-red-600 rounded text-white">Delete</a>
                                     </td>
                                 </tr>

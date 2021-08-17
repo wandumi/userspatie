@@ -27,7 +27,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admins.Permissions.create');
     }
 
     /**
@@ -60,7 +60,11 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::find($id)->first();
+
+        //@dd($permission);
+
+        return view('Admins.permissions.edit');
     }
 
     /**

@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admins.roles.create');
     }
 
     /**
@@ -60,7 +60,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id)->first();
+
+        return view('Admins.roles.edit');
     }
 
     /**

@@ -31,18 +31,30 @@ Route::prefix('admin')->name('admin')->group(function() {
     Route::prefix('users')->name('users.')->group(function(){
 
         Route::get('/', [UserController::class, 'index'] )->name('index');
+        Route::get('/create', [UserController::class, 'create']);
+        Route::post('/store', [UserController::class, 'store']);
+        Route::get('/edit/{id}', [UserController::class, 'edit']);
+        Route::post('/update/{id}', [UserController::class, 'update']);
 
     });
 
     Route::prefix('roles')->name('roles.')->group(function(){
 
         Route::get('/', [RoleController::class, 'index'] )->name('index');
+        Route::get('/create', [RoleController::class, 'create']);
+        Route::post('/store', [RoleController::class, 'store']);
+        Route::get('/edit/{id}', [RoleController::class, 'edit']);
+        Route::post('/update/{id}', [RoleController::class, 'update']);
 
     });
 
     Route::prefix('permissions')->name('permissions.')->group(function(){
 
         Route::get('/', [PermissionController::class, 'index'] )->name('index');
+        Route::get('/create', [PermissionController::class, 'create']);
+        Route::post('/store', [PermissionController::class, 'store']);
+        Route::get('/edit/{id}', [PermissionController::class, 'edit']);
+        Route::post('/update/{id}', [PermissionController::class, 'update']);
 
     });
 
