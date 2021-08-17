@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\RoleController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Users\ProfileController;
 use App\Http\Controllers\Users\PermissionController;
 
 /*
@@ -58,4 +59,19 @@ Route::prefix('admin')->name('admin')->group(function() {
 
     });
 
+    
+
+});
+
+Route::prefix('users')->name('users')->group(function() {
+
+    Route::prefix('profile')->name('profile.')->group(function(){
+
+        Route::get('/', [ProfileController::class, 'index'] )->name('index');
+        Route::get('/create', [ProfileController::class, 'create']);
+        Route::post('/store', [ProfileController::class, 'store']);
+        Route::get('/edit/{id}', [ProfileController::class, 'edit']);
+        Route::post('/update/{id}', [ProfileController::class, 'update']);
+
+    });
 });
