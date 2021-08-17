@@ -12,7 +12,18 @@
                 <a href="" class="bg-blue-500 px-3 py-2 text-white">Edit Role</a>
             </div>
 
-                <form action="" method="post" class="mx-4">
+            @if (session()->has('success'))
+                        <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+                            <p>
+                                {{ session()->get('success') }}
+                            </p>
+                        </div>
+                    @endif
+
+                <form action="{{ url('admin/roles/update', $role->id) }}" method="post" class="mx-4">
+                  @csrf
+                  {{-- @method('PUT') --}}
+
                     <div class="mt-8 max-w-md">
                       <div class="grid grid-cols-1 gap-6">
                         <label class="block">
@@ -20,6 +31,7 @@
                           <input type="text" 
                                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                                  placeholder=""
+                                 value="{{ $role->name }}"
                                  name="name">
                         </label>
                         
@@ -53,7 +65,7 @@
                         <div class="block">
                           <div class="mt-2">
                             <div>
-                               <input type="button" value="Update" class="bg-blue-500 text-white p-2">
+                               <input type="submit" value="Update" class="bg-blue-500 w-full text-white p-2">
                             </div>
                           </div>
                         </div>

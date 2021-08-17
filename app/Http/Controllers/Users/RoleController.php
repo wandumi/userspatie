@@ -64,7 +64,7 @@ class RoleController extends Controller
 
         $role->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->back()->with('success','Role added successfully.');
     }
 
     /**
@@ -86,11 +86,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::find($id)->first();
-
+        $role = Role::where('id',$id)->first();
+        
         $permissions = Permission::all();
 
-        return view('Admins.roles.edit', compact('permissions') );
+        return view('Admins.roles.edit', compact('permissions','role') );
     }
 
     /**
@@ -102,7 +102,26 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::where('id',$id)->first();
+
+        @dd($role);
+
+        $role = new Role;
+        $role->name = $request->name;
+        $role->guard_name = 'web';
+        
+        
+        if($request->has('permissions'))
+        {
+            //@dd(collect( $request->permissions ));
+            $role->givePermissionTo( $request->permissions );
+        }
+
+        $role->save();
+
+        return redirect()->back()->with('success','Role / Permission updated successfully.');
+
+
     }
 
     /**
