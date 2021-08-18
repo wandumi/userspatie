@@ -16,9 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //Users = User::with('roles')->latest()->paginate(10);
 
-        $Users = User::where('is_admin', 0)->latest()->paginate(10);
+        $Users = User::with('roles')->latest()->paginate(10);
+
+        //$Users = User::where('is_admin', 0)->latest()->paginate(10);
 
         $roles = Role::all();
 
@@ -70,11 +71,6 @@ class UserController extends Controller
         $user = User::find($id)->first();
 
         $roles = Role::all();
-
-        // // @dd($user->roles);
-        // foreach($user->roles as $userrole){
-        //     @dd($userrole->id);
-        // }
 
         return view('Admins.users.edit', compact('user', 'roles') );
     }

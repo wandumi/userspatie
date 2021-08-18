@@ -35,19 +35,24 @@
 
                     <x-slot name="content">
 
-                        <x-dropdown-link :href="url('admin/users')">
-                            {{ __('Users') }}
-                        </x-dropdown-link>
+                        @role('super-admin|admin|manager')
+                            <x-dropdown-link :href="url('admin/users')">
+                                {{ __('Users') }}
+                            </x-dropdown-link>
+                            
+                            
+                                <x-dropdown-link :href="url('admin/roles')">
+                                    {{ __('Roles') }}
+                                </x-dropdown-link>
 
-                        <x-dropdown-link :href="url('admin/roles')">
-                            {{ __('Roles') }}
-                        </x-dropdown-link>
+                            
+                                <x-dropdown-link :href="url('admin/permissions')">
+                                    {{ __('Permissions') }}
+                                </x-dropdown-link>
+                            
+                        @endrole
 
-                        <x-dropdown-link :href="url('admin/permissions')">
-                            {{ __('Permissions') }}
-                        </x-dropdown-link>
-
-                        <x-dropdown-link :href="url('users/profile')">
+                        <x-dropdown-link :href="url('users/profile/edit', auth()->user()->id )">
                             {{ __('Profile') }}
                         </x-dropdown-link>
                         <!-- Authentication -->

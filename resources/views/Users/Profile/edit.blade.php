@@ -23,12 +23,14 @@
                             <input type="text" 
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                                    placeholder=""
-                                   value="{{ $profile->name }}"
+                                   value="{{ $User->name }}"
                                    name="name">
                           </label>
                           <label class="block">
                             <span class="text-gray-700">Email address</span>
-                            <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="john@example.com">
+                            <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                                   placeholder=""
+                                   value="{{ $User->email }}">
                           </label>
 
                           <label class="block">
@@ -60,7 +62,7 @@
                           <div class="block">
                             <div class="mt-2">
                               <div>
-                                 <input type="button" value="Submit" class="bg-blue-500 w-full text-white p-2">
+                                 <input type="submit" value="Update" class="bg-blue-500 w-full text-white p-2">
                               </div>
                             </div>
                           </div>

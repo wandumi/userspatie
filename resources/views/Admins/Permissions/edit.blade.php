@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="mb-3 mx-4 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Edit Permission</a>
+                <a href="{{ url('admin/permissions') }}" class="bg-blue-500 px-3 py-2 text-white">Back</a>
             </div>
 
             <div class="bg-white">
@@ -43,14 +43,15 @@
                         </label>
                        
                        
-                        
-                        <div class="block">
-                          <div class="mt-2">
-                            <div>
-                               <input type="button" value="Update" class="bg-blue-500 text-white p-2">
+                        @can('update:permission')
+                          <div class="block">
+                            <div class="mt-2">
+                              <div>
+                                <input type="button" value="Update" class="bg-blue-500 text-white p-2">
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        @endcan
                       </div>
                     </div>
   

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
@@ -57,7 +58,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $User = User::where('id', $id)->first();
+
+        return view("Users.profile.edit", compact('User') );
     }
 
     /**

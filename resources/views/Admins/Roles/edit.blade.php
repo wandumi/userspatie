@@ -8,17 +8,17 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <div class="mb-3 mx-4 justify-items-end flex">
-                <a href="{{ url('admin/roles') }}" class="bg-blue-500 px-3 py-2 text-white">back</a>
-            </div>
+                <div class="mb-3 mx-4 justify-items-end flex">
+                    <a href="{{ url('admin/roles') }}" class="bg-blue-500 px-3 py-2 text-white">back</a>
+                </div>
 
-            @if (session()->has('success'))
-                        <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
-                            <p>
-                                {{ session()->get('success') }}
-                            </p>
-                        </div>
-                    @endif
+                @if (session()->has('success'))
+                    <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+                        <p>
+                            {{ session()->get('success') }}
+                        </p>
+                    </div>
+                @endif
 
                 <form action="{{ url('admin/roles/update', $role->id) }}" method="post" class="mx-4">
                   @csrf
@@ -76,14 +76,15 @@
                         </div>
                        
                        
-                        
-                        <div class="block">
-                          <div class="mt-2">
-                            <div>
-                               <input type="submit" value="Update" class="bg-blue-500 w-full text-white p-2">
+                        @can('update:role')
+                          <div class="block">
+                            <div class="mt-2">
+                              <div>
+                                <input type="submit" value="Update" class="bg-blue-500 w-full text-white p-2">
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        @endcan
                       </div>
                     </div>
   

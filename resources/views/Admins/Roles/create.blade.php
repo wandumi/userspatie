@@ -8,9 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <div class="mb-3 mx-4 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Create Role</a>
-            </div>
+            @can('create:role')
+              <div class="mb-3 mx-4 justify-items-end flex">
+                  <a href="" class="bg-blue-500 px-3 py-2 text-white">Create Role</a>
+              </div>
+            @endcan
 
             <div class="bg-white">
               @if (session()->has('success'))
@@ -58,14 +60,15 @@
                           </div>
                         </div>
                         
-                        
-                        <div class="block">
-                          <div class="mt-2">
-                            <div>
-                                <input type="submit" value="Submit" class="bg-blue-500 w-full text-white p-2">
+                        @can('update:role')
+                          <div class="block">
+                            <div class="mt-2">
+                              <div>
+                                  <input type="submit" value="Submit" class="bg-blue-500 w-full text-white p-2">
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        @endcan
                       </div>
                     </div>
   

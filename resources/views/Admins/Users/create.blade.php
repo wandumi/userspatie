@@ -8,71 +8,82 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <div class="mb-3 mx-4 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Create User</a>
+            <div class="mb-5 mx-4 justify-items-end flex">
+                <a href="{{ url('admin/users') }}" class="bg-blue-500 px-3 py-2 text-white">Back</a>
             </div>
 
-            <div class="bg-white">
+          
+            <form action="" method="post" class="mx-4">
+              <div class="mt-8 max-w-md">
+                  <div class="grid grid-cols-1 gap-6">
+                    <label class="block">
+                      <span class="text-gray-700">Full name</span>
+                      <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="">
+                    </label>
+                    <label class="block">
+                      <span class="text-gray-700">Email address</span>
+                      <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="">
+                    </label>
 
-            </div>
-                <form action="" method="post" class="mx-4">
-                    <div class="mt-8 max-w-md">
-                        <div class="grid grid-cols-1 gap-6">
-                          <label class="block">
-                            <span class="text-gray-700">Full name</span>
-                            <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="">
-                          </label>
-                          <label class="block">
-                            <span class="text-gray-700">Email address</span>
-                            <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="john@example.com">
-                          </label>
-                          <label class="block">
-                            <span class="text-gray-700">When is your event?</span>
-                            <input type="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                          </label>
-                          <label class="block">
-                            <span class="text-gray-700">Assign Role</span>
-                            <select class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                              <option disabled value="">Choose a Role</option>
+                   
+                    <label class="block">
+                      <span class="text-gray-700">Password</span>
+                      <input type="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="">
+                     
+                    </label>
+
+                    <label class="block">
+                      <span class="text-gray-700">Confirm Password</span>
+                      <input type="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                      placeholder=""
+                      value="">
+                     
+
+                    </label>
+                    
+                   
+
+                    <div class="block">
+                      <span class="text-gray-700">Assign Role</span>
+                      <div class="mt-2">
+                        <div>
+                          @foreach ($roles as $role)
+                            <label class="inline-flex items-center mr-2">
+                              <input type="checkbox" name="role[]" value="{{ $role->id }}"
+                                  
                               
-                              @foreach ($roles as $role)
-                                 <option  name="role[]" value="{{ $role->id }}">{{ $role->name }}</option>
-                              @endforeach
-                             
-                            </select>
-                          </label>
+                              >
+                              <span class="ml-2">{{ $role->name }}</span>
+                            </label>
+                              
+                          @endforeach
+                        </div>
+                      </div>
+                    </div>
 
-                          <div class="block">
-                            <span class="text-gray-700">Assign Role</span>
-                            <div class="mt-2">
-                              <div>
-                                @foreach ($roles as $role)
-                                  <label class="inline-flex items-center mr-2">
-                                    <input type="checkbox" name="role[]" value="{{ $role->id }}">
-                                    <span class="ml-2">{{ $role->name }}</span>
-                                  </label>
-                                    
-                                @endforeach
-                              </div>
-                            </div>
-                          </div>
-                          <label class="block">
-                            <span class="text-gray-700">Additional details</span>
-                            <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" rows="3"></textarea>
-                          </label>
-                         
-
-                          <div class="block">
-                            <div class="mt-2">
-                              <div>
-                                 <input type="button" value="Submit" class="bg-blue-500 w-full text-white p-2">
-                              </div>
-                            </div>
+                    
+                   
+                    @can('create:user')
+                      <div class="block">
+                        <div class="mt-2">
+                          <div>
+                            <input type="submit" value="Submit" class="bg-blue-500 w-full text-white p-2">
                           </div>
                         </div>
                       </div>
-  
-                </form>
+                    @endcan
+
+
+                  </div>
+                </div>
+
+            </form>
             
             
         </div>

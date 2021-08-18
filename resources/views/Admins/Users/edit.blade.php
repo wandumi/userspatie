@@ -74,14 +74,15 @@
 
                     
                    
-
-                    <div class="block">
-                      <div class="mt-2">
-                        <div>
-                           <input type="button" value="Submit" class="bg-blue-500 w-full text-white p-2">
+                    @can('update:user')
+                      <div class="block">
+                        <div class="mt-2">
+                          <div>
+                            <input type="button" value="Submit" class="bg-blue-500 w-full text-white p-2">
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    @endcan
                   </div>
                 </div>
 

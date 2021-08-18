@@ -60,7 +60,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $AdminRole = Role::create(['name' => 'admin']);
 
-        $ModeratorRole = Role::create(['name' => 'manager or moderator']);
+        $ModeratorRole = Role::create(['name' => 'manager']);
 
         $UserRole = Role::create(['name' => 'user']);
 
