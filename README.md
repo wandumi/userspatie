@@ -53,7 +53,8 @@ When the setup is done run the migration
   php artisan migrate
 ```
 
-The application users a package called Spatie, which implements Roles and Permissions. There some configurations in this repository, to fast track the setup of roles and permissions you might run
+The application uses a package called [![Spatie](https://spatie.be/docs/laravel-permission/v4/introduction)
+, which implements Roles and Permissions. There some configurations in this repository, to fast track the setup of roles and permissions you might run
 the following command which __SEED_ default users, roles and permission in the database. 
 ```bash
   php artisan migrate:fresh --seed
