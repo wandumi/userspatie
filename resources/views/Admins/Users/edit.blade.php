@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users') }}
+            {{ __('Users Edit') }}
         </h2>
     </x-slot>
 
@@ -55,6 +55,7 @@
                           @foreach ($roles as $role)
                             <label class="inline-flex items-center mr-2">
                               <input type="checkbox" name="role[]" value="{{ $role->id }}"
+                              
                                   @foreach ($user->Roles as $userrole)
 
                                       @if ( $role->id == $userrole->id )

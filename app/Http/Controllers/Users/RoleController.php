@@ -17,7 +17,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $Roles = Role::with('permissions')->paginate(10);
+        $Roles = Role::with('permissions')->latest()->paginate(10);
 
         //@dd($Roles);
 
@@ -134,6 +134,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Role = Role::find($id);
+        $Role->delete();
+
+        return redirect()->back()->with('success', "Role was successfully Deleted");
     }
 }

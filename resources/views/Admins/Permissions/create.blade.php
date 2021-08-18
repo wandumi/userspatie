@@ -9,63 +9,58 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
           @can('create:permission')
+
             <div class="mb-3 mx-4 justify-items-end flex">
-                <a href="" class="bg-blue-500 px-3 py-2 text-white">Create Permission</a>
+                <a href="{{ url('admin/permissions') }}" class="bg-blue-500 px-3 py-2 text-white">Back</a>
             </div>
             
           @endcan
 
-            @if (session()->has('success'))
-                        <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
-                            <p>
-                                {{ session()->get('success') }}
-                            </p>
+          @if (session()->has('success'))
+              <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+                  <p>
+                      {{ session()->get('success') }}
+                  </p>
+              </div>
+          @endif
+
+          <form action="{{ url('admin/permissions/store') }}" method="post" class="mx-4">
+            @csrf
+
+              <div class="mt-8 max-w-md">
+                <div class="grid grid-cols-1 gap-6">
+                  <label class="block">
+                    <span class="text-gray-700">Permission Name</span>
+                    <input type="text" 
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                            placeholder=""
+                            name="name">
+                  </label>
+                  <label class="block">
+                    <span class="text-gray-700">Permission Description</span>
+                    <input type="text" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                          placeholder=""
+                          name="description">
+                  </label>
+                  
+                  
+                  
+                  @can('update:permission')
+                    <div class="block">
+                      <div class="mt-2">
+                        <div>
+                          <input type="submit" value="Submit" class="bg-blue-500 w-full text-white p-2">
                         </div>
-                    @endif
-                <form action="{{ url('admin/permissions/store') }}" method="post" class="mx-4">
-                  @csrf
-                    <div class="mt-8 max-w-md">
-                      <div class="grid grid-cols-1 gap-6">
-                        <label class="block">
-                          <span class="text-gray-700">Permission Name</span>
-                          <input type="text" 
-                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
-                                 placeholder=""
-                                 name="name">
-                        </label>
-                        <label class="block">
-                          <span class="text-gray-700">Permission Description</span>
-                          <input type="text" 
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
-                                placeholder=""
-                                name="description">
-                        </label>
-                        <label class="block">
-                          <span class="text-gray-700">Guard Name</span>
-                          <input type="text" 
-                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
-                                 placeholder="Web"
-                                 value="web"
-                                 name="guard"
-                                 disabled>
-                        </label>
-                       
-                       
-                        @can('update:permission')
-                          <div class="block">
-                            <div class="mt-2">
-                              <div>
-                                <input type="submit" value="Submit" class="bg-blue-500 w-full text-white p-2">
-                              </div>
-                            </div>
-                          </div>
-                        @endcan
-
-
                       </div>
                     </div>
-  
-                </form>
+                  @endcan
+
+
+                </div>
+              </div>
+
+          </form>
             
             
         </div>

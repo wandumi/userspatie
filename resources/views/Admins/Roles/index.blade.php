@@ -13,6 +13,13 @@
                     <a href="{{ url('admin/roles/create') }}" class="bg-blue-500 px-3 py-2 text-white">Create Role</a>
                 </div>
             @endcan
+            @if (session()->has('success'))
+                <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+                    <p>
+                        {{ session()->get('success') }}
+                    </p>
+                </div>
+            @endif
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -44,12 +51,20 @@
                                     <td class="px-6 py-4 text-center text-sm">
 
                                         @can('read:role')
-                                            <a href="{{ url('admin/roles/edit/'.$role->id ) }}" class="sm:mb-10 py-2 px-4 bg-green-400 rounded">Edit</a> 
+                                            <a href="{{ url('admin/roles/edit/'.$role->id ) }}" class="sm:mb-10 py-2 px-3 bg-green-400 rounded">View</a> 
                                         @endcan
-                                        &nbsp;
+                                        {{-- &nbsp; --}}
 
                                         @can('delete:role')
-                                            <a href="#" class="mt-20 p-2 bg-red-600 rounded text-white">Delete</a>
+                                            <form action="{{ url('admin/roles/delete/'.$role->id) }}" method="post">
+                                                @csrf
+                                                {{-- @method('DELETE') --}}
+
+                                                <button type="submit" class="m-1 p-2 bg-red-600 rounded text-white">
+                                                    Delete
+                                                </button>
+
+                                            </form>
                                         @endcan
                                     </td>
                                 </tr>
@@ -67,7 +82,10 @@
                             <!-- More items... -->
                             </tbody>
                         </table>
-                        <div class="m-2 p-2">Pagination</div>
+                        <div class="flex justify-between m-2 p-2">
+                            Pagination 
+                            {{ $Roles->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
