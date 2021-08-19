@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Users\LocaleController;
 use App\Http\Controllers\Users\RoleController;
 use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\Users\ProfileController;
@@ -59,6 +60,17 @@ Route::prefix('admin')->name('admin')->middleware(['role:super-admin|admin|manag
         Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [PermissionController::class, 'update'])->name('update');
         Route::post('/delete/{id}', [PermissionController::class, 'destroy'])->name('delete');
+
+    });
+
+    Route::prefix('languages')->name('languages.')->group(function(){
+
+        Route::get('/', [LocaleController::class, 'index'] )->name('index');
+        Route::get('/create', [LocaleController::class, 'create'])->name('create');
+        Route::post('/store', [LocaleController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [LocaleController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [LocaleController::class, 'update'])->name('update');
+        Route::post('/delete/{id}', [LocaleController::class, 'destroy'])->name('delete');
 
     });
 

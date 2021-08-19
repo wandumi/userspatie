@@ -12,10 +12,17 @@
                 <a href="{{ url('dashboard') }}" class="bg-blue-500 px-3 py-2 w-1/4 text-white">Dashboard</a>
             </div>
 
-            <div class="bg-white">
-
-            </div>
-                <form action="" method="post" class="mx-4">
+            @if ($errors->any())
+                <div class="bg-red-600 text-white">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                <form action="{{ url('users/profile/store' ) }}" method="post" class="mx-4">
+                   @csrf
                     <div class="mt-8 max-w-md">
                         <div class="grid grid-cols-1 gap-6">
                           <label class="block">
@@ -42,27 +49,41 @@
                                    name="password">
                           </label>
 
+                          <label class="block">
+                            <span class="text-gray-700">Physical Address</span>
+                            <textarea class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
+                            rows="3" 
+                            placeholder=""
+                            name="address"></textarea>
+                          </label>
 
                           <label class="block">
                             <span class="text-gray-700">Language</span>
-                            <select class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                              <option disabled value="">Choose a Language</option>
+                            <select name="locale_id" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                              <option disabled selected value="">Choose a Language</option>
                               
-                              {{-- @foreach ($roles as $role)
-                                 <option  name="role[]" value="{{ $role->id }}">{{ $role->name }}</option>
-                              @endforeach --}}
+                                    @foreach ($Languages as $language)
+                                      <option value="{{ $language->id }}"
+                                          @if (!empty($User->profile->locale_id))
+                                            {{ $User->profile->locale_id == $language->id ? 'selected' : '' }}
+                                          @endif
+                                        >{{ $language->name }}</option>
+                                    @endforeach
                              
                             </select>
                           </label>
-                        
 
+
+                          {{-- {{$label->slug == $User->locale  ? 'selected' : ''}} --}}
                         
                          
+                        
+                          <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
                           <div class="block">
                             <div class="mt-2">
                               <div>
-                                 <input type="submit" value="Update" class="bg-blue-500 w-full text-white p-2">
+                                 <input type="submit" value="Save" class="bg-blue-500 w-full text-white p-2">
                               </div>
                             </div>
                           </div>

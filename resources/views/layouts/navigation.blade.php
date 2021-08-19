@@ -13,8 +13,9 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('home.Dashboard') }}
                     </x-nav-link>
+                    
                 </div>
             </div>
 
@@ -37,23 +38,27 @@
 
                         @role('super-admin|admin|manager')
                             <x-dropdown-link :href="url('admin/users')">
-                                {{ __('Users') }}
+                                {{ __('home.Users') }}
                             </x-dropdown-link>
                             
                             
                                 <x-dropdown-link :href="url('admin/roles')">
-                                    {{ __('Roles') }}
+                                    {{ __('home.Roles') }}
                                 </x-dropdown-link>
 
                             
                                 <x-dropdown-link :href="url('admin/permissions')">
-                                    {{ __('Permissions') }}
+                                    {{ __('home.Permissions') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="url('admin/languages')">
+                                    {{ __('home.Languages') }}
                                 </x-dropdown-link>
                             
                         @endrole
 
                         <x-dropdown-link :href="url('users/profile/edit', auth()->user()->id )">
-                            {{ __('Profile') }}
+                            {{ __('profile.Profile') }}
                         </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -62,7 +67,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('form.Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -85,7 +90,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('home.Dashboard') }}
             </x-responsive-nav-link>
 
         </div>
@@ -100,15 +105,15 @@
             <div class="mt-3 space-y-1">
 
                 <x-responsive-nav-link :href="url('admin/users')">
-                    {{ __('Users') }}
+                    {{ __('home.Users') }}
                 </x-responsive-nav-link>
                 
                 <x-responsive-nav-link :href="url('admin/roles')">
-                    {{ __('Roles') }}
+                    {{ __('home.Roles') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="url('admin/permissions')">
-                    {{ __('Permissions') }}
+                    {{ __('home.Permissions') }}
                 </x-responsive-nav-link>
 
 
@@ -120,7 +125,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('form.Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
