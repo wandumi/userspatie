@@ -18,6 +18,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        // dd(Profile::with('locale')->first() );
         return view("Users.profile.index");
     }
 
@@ -41,20 +42,19 @@ class ProfileController extends Controller
     {
         // @dd(Auth::user()->id);
 
-        $this->validate($request, [
-            'user_id' => 'required|unique:profiles',
+        // $this->validate($request, [
+        //     'user_id' => 'required|unique:profiles',
             
-        ]);
+        // ]);
+        $user = Auth::user()->id;
 
-        $user = User::where('id',Auth::user()->id)->first();
+        $profile = Profile::firstOrNew(['user_id'   => $user ]);
 
-
-        $user_profile = new Profile;
-        $user_profile->user_id = $user->id;
-        $user_profile->locale_id = $request->locale_id;
-        $user_profile->address = $request->address;
+        $profile->user_id = $user;
+        $profile->locale_id = $request->locale_id;
+        $profile->address = $request->address;
                 
-        $user_profile->save();
+        $profile->save();
 
         return redirect()->back()->with('success','Profile saved successfully.');
     }
@@ -84,7 +84,7 @@ class ProfileController extends Controller
     {
         
         $User = User::where('id', $id)->first();
-        //@dd(empty($User->profile->locale_id)  );
+        // @dd($User->profile->locale_id);
 
         $Languages = locale::all();
 

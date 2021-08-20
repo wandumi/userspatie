@@ -48,8 +48,8 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function locale()
-    {
-        return $this->hasOne(Locale::class);
-    }
+    // public function locale()
+    // {
+    //     return $this->hasOne(Locale::class);
+    // }
 }
