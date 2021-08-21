@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Profile;
+use App\Models\Activity;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -48,8 +49,10 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    // public function locale()
-    // {
-    //     return $this->hasOne(Locale::class);
-    // }
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    
 }

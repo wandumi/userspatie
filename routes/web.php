@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Users\LocaleController;
+use App\Http\Controllers\Users\ActivityController;
 use App\Http\Controllers\Users\RoleController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Users\LocaleController;
 use App\Http\Controllers\Users\ProfileController;
 use App\Http\Controllers\Users\PermissionController;
 
@@ -71,6 +72,17 @@ Route::prefix('admin')->name('admin')->middleware(['role:super-admin|admin|manag
         Route::get('/edit/{id}', [LocaleController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [LocaleController::class, 'update'])->name('update');
         Route::post('/delete/{id}', [LocaleController::class, 'destroy'])->name('delete');
+
+    });
+
+    Route::prefix('activities')->name('activities.')->group(function(){
+
+        Route::get('/', [ActivityController::class, 'index'] )->name('index');
+        Route::get('/create', [ActivityController::class, 'create'])->name('create');
+        Route::post('/store', [ActivityController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [ActivityController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [ActivityController::class, 'update'])->name('update');
+        Route::post('/delete/{id}', [ActivityController::class, 'destroy'])->name('delete');
 
     });
 

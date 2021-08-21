@@ -15,4 +15,6 @@
         "Permissions"       => "permissions",
         "Roles"             => "roles",
         "Languages"         => "languages",
+        "Your_logged_in"    => "Du bist eingeloggt",
+        "Activities"        => "Activities",
      ];

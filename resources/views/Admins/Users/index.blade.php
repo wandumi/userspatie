@@ -46,7 +46,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @foreach ($user->roles as $role)
-                                            <span class="font-bold">{{ $role->name }} </span>
+                                            <span class="font-bold">{{ ucfirst( $role->name ) }} <br /> </span>
                                         @endforeach
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->diffForHumans() }}</td>

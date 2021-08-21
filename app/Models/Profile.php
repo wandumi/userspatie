@@ -27,5 +27,10 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function locale()
+    {
+        return $this->belongsTo(Locale::class);
+    }
+
     
 }

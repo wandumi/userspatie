@@ -10,9 +10,11 @@
         "locale"            => "locale",
         "Log Out"           => "Ausloggen",
         "Dashboard"         => "Armaturenbrett",
-        "home"              => "home",
-        "users"             => "users",
-        "permissions"       => "permissions",
-        "roles"             => "roles",
+        "Home"              => "Heim",
+        "Users"             => "Benutzer",
+        "Permissions"       => "Berechtigungen",
+        "Roles"             => "Rollen",
+        "Languages"         => "Sprachen",
+        "Activities"        => "Activities",
 
      ];

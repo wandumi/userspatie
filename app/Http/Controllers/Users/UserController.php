@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Models\Locale;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -46,7 +49,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->assignRole($request->role);
+
+        //Every newly created user, will automatically have a profile
+        $locale = Locale::where('id', 2)->first();
+        // dd($locale);
+        
+        $profile = new Profile;
+        $profile->user_id = $user->id;
+        $profile->locale_id = $locale->id;
+        $profile->save();
+        
+
+        return redirect()->back()->with('success', "User Registered Successfully");
     }
 
     /**

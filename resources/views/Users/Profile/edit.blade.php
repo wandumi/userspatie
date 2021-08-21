@@ -51,11 +51,11 @@
 
                           <label class="block">
                             <span class="text-gray-700">Physical Address</span>
-                            <textarea class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-0" 
+                            <textarea class="block px-2 w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-0" 
                             rows="3" 
                             placeholder=""
-                            name="address">
-                            {{ $User->profile->address }}
+                            name="address" >
+                            {{-- //{{ $User->profile->address ?: '' }} --}}
                           </textarea>
                           </label>
 
