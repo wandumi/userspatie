@@ -1,8 +1,9 @@
 # DESCRIPTION
 
 The repository contains configurations of Laravel and User Permissions 
-using Spatie. The seeder of Users, Roles and Permissions can be seeded
-successfully and there is no extension of the Models.
+using Spatie. There are seeders for Users, Roles and Permissions for default
+login and test the applications. There is also implementation of language (locale)
+and User logs (Login & Logout) which can be accessed by the Administrators.
 
 ## INSTALLATION
 
