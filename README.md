@@ -1,9 +1,9 @@
 # DESCRIPTION
 
 The repository contains configurations of Laravel and User Permissions 
-using Spatie. There are seeders for Users, Roles and Permissions for default
-login and test the applications. There is also implementation of language (locale)
-and User logs (Login & Logout) which can be accessed by the Administrators.
+using Spatie. There are seeders for Users, Roles and Permissions and their default
+implementations. There is also implementation of language (locale)
+and User logs (Login & Logout) which can be accessed by only the Administrators.
 
 ## INSTALLATION
 
