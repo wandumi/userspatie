@@ -38,7 +38,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
+        
         $this->validate($request, [
             'name' => 'required|min:7|max:250|unique:permissions',
             'description' => 'required|max:255',
@@ -51,7 +51,7 @@ class PermissionController extends Controller
         $permission->guard_name     = 'web';
         $permission->save();
 
-        return redirect()->back()->with('success', "Permission was successfully Added");
+        return redirect()->route('adminpermissions.index')->with('success', "Permission was successfully Added");
     }
 
     /**
@@ -77,7 +77,7 @@ class PermissionController extends Controller
 
         //@dd($permission);
 
-        return view('Admins.permissions.edit');
+        return view('Admins.permissions.edit', compact('permission') );
     }
 
     /**
@@ -89,7 +89,20 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return $request->all();
+        $this->validate($request, [
+            'name' => 'required|min:7|max:250|unique:permissions',
+            'description' => 'required|max:255',
+           
+        ]);
+
+        $permission = Permission::find($id);
+        $permission->name           = $request->name;
+        $permission->description    = $request->description;
+        $permission->guard_name     = 'web';
+        $permission->save();
+
+        return redirect()->route('adminpermissions.index')->with('success', "Permission was successfully Added");
     }
 
     /**
@@ -103,6 +116,6 @@ class PermissionController extends Controller
         $permission = Permission::find($id);
         $permission->delete();
 
-        return redirect()->back()->with('success', "Permission was successfully Deleted");
+        return redirect()->route('adminpermissions.index')->with('success', "Permission was successfully Deleted");
     }
 }

@@ -22,20 +22,16 @@ class localeMiddleware
     {
         $locale = null;
 
-        // Check the user if authenticated, and store in session
+        //Check the user if authenticated, and store in session
         if( Auth::check() && !Session::has('locale') )
         {
-
             $locale = $request->user()->profile->locale->slug;
-
-            Session::put('locale', $locale  );
-              
+            Session::put('locale', $locale);
         }
 
         if($request->has('locale'))
         {
             $locale = $request->get('locale');
-
             Session::put('locale', $locale);
         }
 

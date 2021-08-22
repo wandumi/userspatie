@@ -16,15 +16,10 @@
             
           @endcan
 
-          @if (session()->has('success'))
-              <div class="fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
-                  <p>
-                      {{ session()->get('success') }}
-                  </p>
-              </div>
-          @endif
+          
 
           <form action="{{ url('admin/languages/store') }}" method="post" class="mx-4">
+            
             @csrf
 
               <div class="mt-8 max-w-md">

@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            @can('create:permission')
+            @can('create:locale')
                 <div class="mb-3 justify-items-end flex">
                     <a href="{{ url('admin/languages/create') }}" class="bg-blue-500 px-3 py-2 text-white">Add Languages</a>
                 </div>
@@ -46,16 +46,16 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $language->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
 
-                                        @can('read:permission')
-                                            <a href="{{ url('admin/languages/'.$language->id) }}" class="m-1 py-2 px-3 bg-green-400 rounded">View</a> 
+                                        @can('read:locale')
+                                            <a href="{{ url('admin/languages/edit/'.$language->id) }}" class="m-1 py-2 px-3 bg-green-400 rounded">View</a> 
                                         @endcan
                                         
                                         <span class="mb-5"></span>
                                         
-                                        @can('delete:permission')
+                                        @can('delete:locale')
                                             <form action="{{ url('admin/languages/delete/'.$language->id) }}" method="post">
                                                 @csrf
-                                                 {{-- @method('DELETE') --}}
+                                               
 
                                                 <button type="submit" class="m-1 p-2 bg-red-600 rounded text-white">
                                                     Delete

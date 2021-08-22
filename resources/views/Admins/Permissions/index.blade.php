@@ -30,6 +30,7 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Id</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Name</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Description</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Guard</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Created At</th>
                                 <th scope="col" class="relative px-6 py-3">Action</th>
@@ -42,12 +43,14 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $permission->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $permission->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $permission->description }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $permission->guard_name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $permission->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center text-sm">
 
                                         @can('read:permission')
-                                            <a href="{{ url('admin/permissions/'.$permission->id) }}" class="m-1 py-2 px-3 bg-green-400 rounded">View</a> 
+                                            <a href="{{ url('admin/permissions/edit/'.$permission->id) }}" 
+                                                class="m-1 py-2 px-3 bg-green-400 rounded">View</a> 
                                         @endcan
                                         
                                         <span class="mb-5"></span>
@@ -69,6 +72,7 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">id</td>
                                 <td class="px-6 py-4 whitespace-nowrap">Name</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Description</td>
                                 <td class="px-6 py-4 whitespace-nowrap">Guard</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                 created At

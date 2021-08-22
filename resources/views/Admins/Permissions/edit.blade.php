@@ -15,7 +15,8 @@
             <div class="bg-white">
 
             </div>
-                <form action="" method="post" class="mx-4">
+                <form action="{{ url('admin/permissions/update/'. $permission->id ) }}" method="post" class="mx-4">
+                  @csrf
                     <div class="mt-8 max-w-md">
                       <div class="grid grid-cols-1 gap-6">
                         <label class="block">
@@ -23,31 +24,25 @@
                           <input type="text" 
                                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                                  placeholder=""
-                                 name="name">
+                                 name="name"
+                                 value="{{ $permission->name }}">
                         </label>
                         <label class="block">
                           <span class="text-gray-700">Permission Description</span>
                           <input type="text" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                                 placeholder=""
-                                name="description">
+                                name="description"
+                                value="{{ $permission->description }}">
                         </label>
-                        <label class="block">
-                          <span class="text-gray-700">Guard Name</span>
-                          <input type="text" 
-                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
-                                 placeholder="Web"
-                                 value="web"
-                                 name="guard"
-                                 disabled>
-                        </label>
+                    
                        
                        
                         @can('update:permission')
                           <div class="block">
                             <div class="mt-2">
                               <div>
-                                <input type="button" value="Update" class="bg-blue-500 text-white p-2">
+                                <input type="submit" value="Update" class="bg-blue-500 text-white p-2">
                               </div>
                             </div>
                           </div>

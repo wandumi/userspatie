@@ -1,18 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Logged Activity') }}
+            {{ __('activity.Logged Activities') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            
-            {{-- @can('create:permission')
-                <div class="mb-3 justify-items-end flex">
-                    <a href="{{ url('admin/languages/create') }}" class="bg-blue-500 px-3 py-2 text-white">Add Languages</a>
-                </div>
-            @endcan --}}
+        
 
 
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -36,7 +31,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $activity->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ ucfirst($activity->user->name) }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $activity->activity }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $activity->created_at }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $activity->created_at->diffForHumans() }}</td>
                                     
                                 </tr>
                             @endforeach

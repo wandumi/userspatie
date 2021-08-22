@@ -27,6 +27,9 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                     @else
+                        <a href="/?locale=en" class="text-sm text-gray-700 underline">EN</a>
+                        <a href="/?locale=de" class="text-sm text-gray-700 underline">DE</a>
+                        &nbsp;
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
                         @if (Route::has('register'))

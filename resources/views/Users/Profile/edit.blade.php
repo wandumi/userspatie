@@ -21,8 +21,10 @@
                     </ul>
                 </div>
             @endif
-                <form action="{{ url('users/profile/store' ) }}" method="post" class="mx-4">
+                <form action="{{ url('users/profile/update/'. $User->id ) }}" method="post" class="mx-4">
+
                    @csrf
+
                     <div class="mt-8 max-w-md">
                         <div class="grid grid-cols-1 gap-6">
                           <label class="block">
@@ -66,20 +68,15 @@
                               
                                     @foreach ($Languages as $language)
                                       <option value="{{ $language->id }}"
-                                          @if (!empty($User->profile->locale_id))
+                                          {{-- @if (!empty($User->profile->locale_id)) --}}
                                             {{ $User->profile->locale_id == $language->id ? 'selected' : '' }}
-                                          @endif
+                                          {{-- @endif --}}
                                         >{{ $language->name }}</option>
                                     @endforeach
                              
                             </select>
-                          </label>
-
-
-                          {{-- {{$label->slug == $User->locale  ? 'selected' : ''}} --}}
-                        
+                          </label>                        
                          
-                        
                           <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
                           <div class="block">

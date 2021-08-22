@@ -2,19 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Profile;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class locale extends Model
+class Locale extends Model
 {
     use HasFactory;
 
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasMany(Profile::class);
     }
-
-    
 }

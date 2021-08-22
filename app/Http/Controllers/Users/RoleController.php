@@ -63,7 +63,7 @@ class RoleController extends Controller
 
         $role->save();
 
-        return redirect()->back()->with('success','Role added successfully.');
+        return redirect()->route('adminroles.index')->with('success','Role added successfully.');
     }
 
     /**
@@ -121,7 +121,7 @@ class RoleController extends Controller
         
         $role->save();
 
-        return redirect()->back()->with('success','Role / Permission updated successfully.');
+        return redirect()->route('adminroles.index')->with('success','Role / Permission updated successfully.');
 
 
     }
@@ -137,6 +137,6 @@ class RoleController extends Controller
         $Role = Role::find($id);
         $Role->delete();
 
-        return redirect()->back()->with('success', "Role was successfully Deleted");
+        return redirect()->route('adminroles.index')->with('success', "Role was successfully Deleted");
     }
 }

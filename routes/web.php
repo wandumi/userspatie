@@ -29,6 +29,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/{lang}', function($lang){
+    App::setLocale($lang);
+    //dd(App::getLocale());
+    return view('welcome');
+});
+
 Route::prefix('admin')->name('admin')->middleware(['role:super-admin|admin|manager'])->group(function() {
 
     Route::prefix('users')->name('users.')->group(function(){
@@ -92,13 +98,13 @@ Route::prefix('admin')->name('admin')->middleware(['role:super-admin|admin|manag
 
 Route::prefix('users')->name('users')->group(function() {
 
-    Route::prefix('profile')->name('profile.')->group(function(){
+    Route::prefix('profile')->name('profile')->group(function(){
 
-        Route::get('/', [ProfileController::class, 'index'] )->name('index');
-        Route::get('/create', [ProfileController::class, 'create']);
-        Route::post('/store', [ProfileController::class, 'store']);
-        Route::get('/edit/{id}', [ProfileController::class, 'edit']);
-        Route::post('/update/{id}', [ProfileController::class, 'update']);
+        Route::get('/', [ProfileController::class, 'index'] )->name('profile');
+        Route::get('/create', [ProfileController::class, 'create'])->name('create');
+        Route::post('/store', [ProfileController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [ProfileController::class, 'update'])->name('udpate');
 
     });
 });

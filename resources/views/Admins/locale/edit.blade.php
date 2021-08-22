@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-          @can('create:permission')
+          @can('create:locale')
 
             <div class="mb-3 mx-4 justify-items-end flex">
                 <a href="{{ url('admin/languages') }}" class="bg-blue-500 px-3 py-2 text-white">Back</a>
@@ -24,7 +24,7 @@
               </div>
           @endif
 
-          <form action="{{ url('admin/languages/store') }}" method="post" class="mx-4">
+          <form action="{{ url('admin/languages/update/'.$locale->id) }}" method="post" class="mx-4">
             @csrf
 
               <div class="mt-8 max-w-md">
@@ -34,14 +34,16 @@
                     <input type="text" 
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                             placeholder=""
-                            name="name">
+                            name="name"
+                            value="{{ $locale->name }}">
                   </label>
                   <label class="block">
                     <span class="text-gray-700">Slug (en, de)</span>
                     <input type="text" 
                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
                           placeholder=""
-                          name="slug">
+                          name="slug"
+                          value="{{ $locale->slug }}">
                   </label>
                   
                   

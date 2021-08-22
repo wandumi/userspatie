@@ -49,7 +49,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // return $request->all();
+        $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed'],
@@ -65,15 +66,14 @@ class UserController extends Controller
 
         //Every newly created user, will automatically have a profile
         $locale = Locale::where('id', 2)->first();
-        // dd($locale);
-        
+       
         $profile = new Profile;
         $profile->user_id = $user->id;
         $profile->locale_id = $locale->id;
         $profile->save();
         
 
-        return redirect()->back()->with('success', "User Registered Successfully");
+        return redirect()->route('adminusers.index')->with('success', "User Registered Successfully");
     }
 
     /**
@@ -95,7 +95,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id)->first();
+        $user = User::with('roles')->where('id',$id)->first();
 
         $roles = Role::all();
 
@@ -111,7 +111,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            //'password' => ['required', 'confirmed'],
+        ]);
+
+        $user = User::update([
+            'name' => $request->name,
+            'email' => $request->email,
+            // 'password' => Hash::make($request->password),
+        ]);
+
+        $user->syncRoles($request->role);
+
+        // //Every newly created user, will automatically have a profile
+        
+
+        return redirect()->route('adminusers.index')->with('success', "User Updated Successfully");
     }
 
     /**

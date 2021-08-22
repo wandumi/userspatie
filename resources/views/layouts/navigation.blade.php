@@ -122,6 +122,14 @@
                     {{ __('home.Permissions') }}
                 </x-responsive-nav-link>
 
+                <x-responsive-nav-link :href="url('admin/languages')">
+                    {{ __('home.Languages') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="url('admin/activities')">
+                    {{ __('Activities') }}
+                </x-responsive-nav-link>
+
 
                 
                 <!-- Authentication -->

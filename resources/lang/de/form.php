@@ -13,5 +13,5 @@
         "Confirm Password"          => "Bestätige das Passwort",
         "Growmytree"                => "lass meinen baum wachsen",
         "Documentation"             => "Dokumentation",
-        "Already registered?"       => "Bereits registriert?"
+        "Already registered?"       => "Bereits registriert?",
     ];

@@ -15,6 +15,6 @@
         "Permissions"       => "Berechtigungen",
         "Roles"             => "Rollen",
         "Languages"         => "Sprachen",
-        "Activities"        => "Activities",
+        "Activities"        => "Aktivität",
 
      ];

@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Models\locale;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -40,12 +42,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        // @dd(Auth::user()->id);
-
-        // $this->validate($request, [
-        //     'user_id' => 'required|unique:profiles',
-            
-        // ]);
+        
         $user = Auth::user()->id;
 
         $profile = Profile::firstOrNew(['user_id'   => $user ]);
@@ -55,6 +52,10 @@ class ProfileController extends Controller
         $profile->address = $request->address;
                 
         $profile->save();
+
+        
+
+        
 
         return redirect()->back()->with('success','Profile saved successfully.');
     }
@@ -101,15 +102,27 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         // @dd(Auth::user()->id);
+        //dd($request->all());
         $user = User::where('id',Auth::user()->id)->first();
 
+        $language = Locale::all();
 
         $user_profile = Profile::where('user_id',$id)->first();
-
-        
         $user_profile->user_id = $user->id;
-        $user_profile->locale_id = $request->language;
+        $user_profile->locale_id = $request->locale_id;
                 
+        //dd($request->locale_id);
+        foreach($language as $lang)
+        {
+           
+            if($lang->id == $request->locale_id)
+            {
+                // dd($lang);
+                Session::put('locale', $lang->slug);
+                App::setLocale($lang->slug);
+            }
+        }
+
         $user_profile->save();
 
         return redirect()->back()->with('success','Profile updated successfully.');
