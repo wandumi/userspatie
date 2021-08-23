@@ -63,7 +63,7 @@
                     <input type="text" 
                     class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
                     placeholder="Enter Username"
-                    name="username">
+                    name="name">
                 </div>
                 <div class="w-full mb-4">
                     <input type="text" 
