@@ -99,7 +99,7 @@
                 <div class="bg-gray-400 h-px w-full mb-6"></div>
     
                 <div class="text-center text-sm">
-                    <a class="text-blue-600 hover:underline" href="{{ route('login') }}">Sign in for an account</a>
+                    <a class="text-blue-600 hover:underline" href="{{ route('login') }}">{{ __('form.Sign in for an account') }}</a>
                 </div>
             </form>
 

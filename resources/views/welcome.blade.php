@@ -38,10 +38,10 @@
                         <a href="/?locale=en" class="text-sm text-gray-700 underline">EN</a>
                         <a href="/?locale=de" class="text-sm text-gray-700 underline">DE</a>
                         &nbsp;
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">{{ __('home.Log in') }}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">{{__('home.Register') }}</a>
                         @endif
                     @endauth
                 </div>

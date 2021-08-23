@@ -78,7 +78,7 @@
             <div class="bg-gray-400 h-px w-full mb-6"></div>
 
             <div class="text-center text-sm">
-                <a class="text-blue-600 hover:underline" href="{{ route('register') }}">Sign up for an account</a>
+                <a class="text-blue-600 hover:underline" href="{{ route('register') }}">{{ __('form.Sign up for an account') }}</a>
             </div>
         </form>
     </x-auth-card>

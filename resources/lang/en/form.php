@@ -11,5 +11,7 @@ return [
     "Register"              => "Register",
     "Username"              => "Username",
     "Confirm Password"      => "Confirm Password",
-    "Already registered?"   => "Already registered?"
+    "Already registered?"   => "Already registered?",
+    "Sign in for an account" => "Sign in for an account",
+    "Sign up for an account" => "Sign up for an account"
 ];
