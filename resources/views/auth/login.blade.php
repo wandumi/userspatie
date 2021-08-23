@@ -5,6 +5,7 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
+        
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -12,7 +13,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('login') }}">
+        {{-- <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <!-- Email Address -->
@@ -50,6 +51,34 @@
                 <x-button class="ml-3">
                     {{ __('form.Log in') }}
                 </x-button>
+            </div>
+        </form> --}}
+
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="w-full mb-4">
+                <input type="text" 
+                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                placeholder="Enter Email"
+                name="email">
+            </div>
+            <div class="w-full mb-4">
+                <input type="password" 
+                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                placeholder="Enter Password"
+                name="password">
+            </div>
+
+            <div class="w-full mb-6">
+                <button type="submit" 
+                class="rounded-sm px-4 py-2 text-sm bg-green-500 font-bold outline-none focus:outline-none hover:bg-opacity w-full text-white disabled:opacity-25">
+                {{ __('form.Log in') }}</button>
+            </div>
+
+            <div class="bg-gray-400 h-px w-full mb-6"></div>
+
+            <div class="text-center text-sm">
+                <a class="text-blue-600 hover:underline" href="{{ route('register') }}">Sign up for an account</a>
             </div>
         </form>
     </x-auth-card>

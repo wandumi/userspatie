@@ -9,7 +9,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        {{-- <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
@@ -54,6 +54,58 @@
                     {{ __('form.Register') }}
                 </x-button>
             </div>
-        </form>
+        </form> --}}
+
+        <div class="m-5">
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                    <div class="w-full mb-4">
+                    <input type="text" 
+                    class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                    placeholder="Enter Username"
+                    name="username">
+                </div>
+                <div class="w-full mb-4">
+                    <input type="text" 
+                    class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                    placeholder="Enter Email"
+                    name="email">
+                </div>
+                <div class="w-full mb-4">
+                    <input type="password" 
+                    class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                    placeholder="Enter Password">
+                </div>
+                <div class="w-full mb-4">
+                    <input type="password" 
+                    class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                    placeholder="Password"
+                    name="password">
+                </div>
+                <div class="w-full mb-4">
+                    <input type="password" 
+                    class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-2 border-solid w-full text-sm"
+                    placeholder="Confirm Password"
+                    name="password_confirmation">
+                </div>
+    
+                <div class="w-full mb-6">
+                    <button type="submit" 
+                    class="rounded-sm px-4 py-2 text-sm bg-green-500 font-bold outline-none focus:outline-none hover:bg-opacity w-full text-white disabled:opacity-25">
+                    {{ __('form.Register') }}
+                </button>
+                </div>
+    
+                <div class="bg-gray-400 h-px w-full mb-6"></div>
+    
+                <div class="text-center text-sm">
+                    <a class="text-blue-600 hover:underline" href="{{ route('login') }}">Sign in for an account</a>
+                </div>
+            </form>
+
+        </div>
+    
+            
+        
     </x-auth-card>
 </x-guest-layout>
